@@ -12,8 +12,8 @@ class NeighborhoodsController < ApplicationController
 
   def create_row
     @neighborhood = Neighborhood.new
-    @neighborhood.name = params[:the_name]
-    @neighborhood.city = params[:the_city]
+    @neighborhood.name = params[:name]
+    @neighborhood.city = params[:city]
 
     @neighborhood.save
 
