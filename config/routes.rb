@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   # READ
   get('/dishes', { :controller => 'dishes', :action => 'index' })
-  get('/dishes/id', { :controller => 'dishes', :action => 'show' })
+  get('/dishes/:id', { :controller => 'dishes', :action => 'show' })
 
   # UPDATE
   get('/dishes/:id/edit_form', { :controller => 'dishes', :action => 'edit_form' })
