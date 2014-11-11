@@ -21,9 +21,12 @@ class NeighborhoodsController < ApplicationController
   end
 
   def edit_form
+    @neighborhood = Neighborhood.find(params[:id])
   end
 
   def update_row
+    @neighborhood = Neighborhood.find(params[:id])
+
     @neighborhood.name = params[:name]
     @neighborhood.city = params[:city]
 
