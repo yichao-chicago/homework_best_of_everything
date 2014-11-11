@@ -8,6 +8,14 @@ class VenuesController < ApplicationController
 
   def show
     @venue = Venue.find(params[:id])
+
+    url_safe_address = URI.encode(@venue.address)
+    url_of_data = "http://maps.googleapis.com/maps/api/geocode/json?address=#{url_safe_address}"
+    raw_data = open(url_of_data).read
+    parsed_data = JSON.parse(raw_data)
+
+    @latitude = parsed_data["results"][0]["geometry"]["location"]["lat"]
+    @longitude = parsed_data["results"][0]["geometry"]["location"]["lng"]
   end
 
   def new_form
