@@ -26,7 +26,7 @@
       var map;
       function initialize() {
 
-        var myLatlng = new google.maps.LatLng(41.8846582, -87.6476668);
+        var myLatlng = new google.maps.LatLng(<%= @latitude %>, <%= @longitude %>);
 
         var mapOptions = {
           zoom: 15,
@@ -39,7 +39,7 @@
         var marker = new google.maps.Marker({
               position: myLatlng,
               map: map,
-              title: 'Au Cheval'
+              title: '<%= @venue.name %>'
           });
       }
 
