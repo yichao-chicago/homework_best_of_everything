@@ -27,8 +27,8 @@ class DishesController < ApplicationController
   def update_row
     @dish = Dish.find(params[:id])
 
-    @dish.the_name = params[:name]
-    @dish.the_cuisine = params[:cuisine]
+    @dish.name = params[:name]
+    @dish.cuisine = params[:cuisine]
 
     @dish.save
 
