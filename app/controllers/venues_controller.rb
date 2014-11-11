@@ -19,6 +19,8 @@ class VenuesController < ApplicationController
     @venue.address = params[:address]
     @venue.neighborhood = params[:neighborhood]
 
+    @venue.save
+
     render('show')
   end
 
