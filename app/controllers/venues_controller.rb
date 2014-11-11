@@ -3,7 +3,7 @@ require 'json'
 
 class VenuesController < ApplicationController
   def index
-    @venues = Venue.list
+    @venues = Venue.all
   end
 
   def show
