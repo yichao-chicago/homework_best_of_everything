@@ -1,62 +1,97 @@
-# Resource Practice
+# Best of Everything
 
-This application has 3 database-backed web CRUD resources:
+## Introduction
 
- - dishes (columns: id, name, cuisine)
- - venues (columns: id, name, address, neighborhood)
- - neighborhoods (columns: id, name, city)
+Do you know who serves your favorite bagel in Chicago? How about your favorite burger? This application will allow you to keep track.
 
-As usual, each resource has 7 "golden" actions that allow users to interact with it:
+The central model in this application are **Favorites**. A favorite belongs to a user and specifies a particular restaurant and a particular dish. For example, my favorite burger in Chicago is served at Au Cheval. Yours might be at Umami Burger. So the favorites table looks like this:
 
-### CREATE
- - new_form
- - create_row
+    Favorite:
+      user_id: integer
+      dish_id: integer
+      venue_id: integer
+      notes: text
 
-### READ
- - index
- - show
+The notes column exists so that users can remember additional info on a dish if they choose to, e.g., what extras to add.
 
-### UPDATE
- - edit_form
- - update_row
+The supporting cast of models in the app are as follows:
 
-### DELETE
- - destroy
+    User:
+      username: string
 
-There are bugs in many of the 21 actions required to CRUD our 3 resources. **Your first job** is to debug them all until you can create, read, update, and delete each of dishes, venues, and neighborhoods without running into any issues.
+    Cuisine:
+      name: string
 
-**Your second job** is to, on the show page for each venue, display the correct latitude and longitude of the venue based on the value in its address column. Currently, every venue shows the same latitude and longitude, which is wrong. Use Google's Geocoding API.
+    Dish:
+      name: string
+      cuisine_id: integer
 
-**For extra credit**, you can fix the embedded Google Map on the show page for each venue to be centered on its real address. Currently, every map is centered on the same location, which is wrong. Replace the static bits of the markup that you want to be dynamic with embedded Ruby.
+    Venue:
+      name: string
+      address: string
+      neighborhood_id:integer
 
-Here is a fully functional version of the app, for your reference.
+    Neighborhood:
+      name: string
+      city: string
 
-https://best-of-everything.herokuapp.com/
+Every table also has it's own `id: integer` column, of course. Also, every table has automatically managed `created_at` and `updated_at` columns.
 
-Make yours work like it. Your local app is using a light Bootswatch, and the reference app is using a dark Bootswatch; don't get confused between the tabs as you try to check your work.
+Right now, the application technically *works*; we can CRUD users, cuisines, dishes, venues, neighborhoods, and favorites. But the interface is horrible.
+
+**Your job is going to be to improve the interface of this application using what you've learned about HTML, CSS, and database queries.**
 
 ## Setup
 
- 1. **FORK** this repository to your own account.
- 1. Clone your fork to your computer.
- 1. `cd` to its location.
+ 1. First **fork** and *then* clone your fork of this repository.
+ 1. `cd` into the application's root folder.
  1. `bundle install`
- 1. `rake db:migrate` (To create the three tables on your machine; I have already written the instructions to do so.)
- 1. `rake db:seed` (to pre-populate your tables with some data, so we can get straight to work. This step may take a while on Windows machines. You can open a new Command Line window to continue working while it runs.)
- 1. `rails server`
+ 1. `rake db:migrate`
+ 1. `rake db:seed`
+ 1. `rails s`
 
-Navigate to
+Navigate to [http://localhost:3000](http://localhost:3000) and click around to familiarize yourself with the application. I've provided some seed data for you so that you can get straight to work.
 
-http://localhost:3000
+## Part 1
 
-You should see a list of dishes. The `Dishes#index` action is functional, and I have set it to be the root URL.
+First of all, our users should never have to see ID numbers. Right now, the following views display raw IDs:
 
-From here, click through the app and debug. Try adding a new dish, updating a dish, looking at the details of a dish, and deleting a dish.
+ - dishes#show (displays cuisine_id)
+ - dishes#index (displays cuisine_id)
+ - venues#show (displays neighborhood_id)
+ - venues#index (displays neighborhood_id)
+ - favorites#show (displays user_id, dish_id, and neighborhood_id)
+ - favorites#index (displays user_id, dish_id, and neighborhood_id)
 
-Sometimes you will get an error message; sometimes there won't be an error message, but the action just won't do its job. Use the server log to help figure out what's going on.
+Go through and improve each of these views to display names rather than IDs. In other words, take an ID number and use it to look up the row in the corresponding table, and then peel off the name attribute.
 
-After fixing CRUD for Dishes, work on CRUD for Venues, then CRUD for Neighborhoods.
+## Part 2
 
-Then work on displaying dynamic latitude and longitude values on the venue details page.
+Now, the interesting part. The core user story in this app is: I should be able to see a list of my favorites.
 
-Last, work on fixing the map, if you have extra time.
+**Your task: on the users#show view, display a list of the user's favorites (which dish and which venue).** You'll have to retrieve some rows from the Favorites table (the ones that belong to the user whose show page you are on) and then loop through them in the view; you can decide what markup to use to make it look nice.
+
+Also,
+
+ - display a list of venues located in a neighborhood on the neighborhoods#show page (print names)
+ - display a list of favorites on the dishes#favorites page (print venue names and usernames)
+ - display a list of favorites on the venues#favorites page (print dish names and usernames)
+
+## Part 3
+
+The Cuisine, Favorite, and User resources that I've added to this application since the last time you saw it (on the midterm) are a little more advanced than the ones we've seen before.
+
+Examine the controllers and views carefully and identify all the new things. What looks funny? Can you figure out what the new code is doing? Prepare lots of questions for us to discuss in class.
+
+## Part 4
+
+Now that you've gotten some hands on experience with models, it's time to nail down your domain model for your app idea. With that in hand, you'll be able to rapidly prototype it next week.
+
+What are the CRUD resources you need in your app? In other words, what are the central *things* you need to keep track of information about?
+
+Write up a list of tables and columns, similar to how I did in the introduction above. Try to specify every column you will need (including foreign keys to connect to other tables).
+
+Bring this written-up list to your faculty coach appointment this week so you can iron out any kinks.
+
+**Ask lots of questions**. Good luck!
+
