@@ -63,7 +63,7 @@ First of all, our users should never have to see ID numbers. Right now, the foll
  - favorites#show (displays user_id, dish_id, and neighborhood_id)
  - favorites#index (displays user_id, dish_id, and neighborhood_id)
 
-Go through and improve each of these views to display names rather than IDs. In other words, take an ID number and use it to look up the row in the corresponding table, and then peel off the name attribute.
+Go through and improve each of these views to display names rather than IDs. In other words, take an ID number and use it to look up the row in the corresponding table, and then peel off something more helpful than the ID (like the name).
 
 ## Part 2
 
