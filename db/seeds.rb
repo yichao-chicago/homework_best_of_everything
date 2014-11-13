@@ -176,7 +176,7 @@ favorite_hashes.each do |favorite_hash|
   favorite.dish_id = dish.id
   puts favorite_hash[:venue]
   favorite.venue_id = venue.id
-  favorite.notes = favorite_hash[:note]
+  favorite.notes = favorite_hash[:notes]
   favorite.save
 end
 
