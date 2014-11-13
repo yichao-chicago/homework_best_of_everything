@@ -13,7 +13,7 @@ class DishesController < ApplicationController
   def create_row
     @dish = Dish.new
     @dish.name = params[:name]
-    @dish.cuisine = params[:cuisine]
+    @dish.cuisine_id = params[:cuisine_id]
 
     @dish.save
 
@@ -28,7 +28,7 @@ class DishesController < ApplicationController
     @dish = Dish.find(params[:id])
 
     @dish.name = params[:name]
-    @dish.cuisine = params[:cuisine]
+    @dish.cuisine_id = params[:cuisine_id]
 
     @dish.save
 
