@@ -95,7 +95,7 @@ venue_hashes = [
   {:name => "Umami Burger", :address => "1480 N Milwaukee Ave, Chicago, IL 60622", :neighborhood => "Wicker Park"},
   {:name => "Handlebar", :address => "2311 W North Ave, Chicago, IL 60647", :neighborhood => "Wicker Park"},
   {:name => "The Whistler", :address => "2421 N Milwaukee Ave, Chicago, IL 60647", :neighborhood => "Logan Square"},
-  {:name => "Skylark", :address => "2149 S Halsted St, Chicago, IL 60608", :neighborhood => ""},
+  {:name => "Skylark", :address => "2149 S Halsted St, Chicago, IL 60608", :neighborhood => "West Loop"},
   {:name => "Shake Shack", :address => "66 E Ohio Street, Chicago, IL 60611", :neighborhood => "Near North Side"},
   {:name => "Margie's Candies", :address => "1960 N Western Ave, Chicago, IL 60647", :neighborhood => "Bucktown"},
   {:name => "MAX's Wine Dive", :address => "1482 N. Milwaukee Ave, Chicago, IL 60622", :neighborhood => "Wicker Park"},
