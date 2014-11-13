@@ -89,9 +89,11 @@ Now that you've gotten some hands on experience with models, it's time to nail d
 
 What are the CRUD resources you need in your app? In other words, what are the central *things* you need to keep track of information about?
 
-Write up a list of tables and columns, similar to how I did in the introduction above. Try to specify every column you will need (including foreign keys to connect to other tables).
+Write up a list of tables and columns, in a format similar to the one I used in the introduction above. Try to specify every column you will need (including foreign keys to connect to other tables).
 
-Bring this written-up list to your faculty coach appointment this week so you can iron out any kinks.
+Basically, re-visit and update [the work you did in Week 1 to plan out your project](http://ask.initialversion.com/t/a-problem-solving-pattern/77), now that you are informed more about the technical side of things.
+
+Bring this written-up list to your faculty coach appointment this week so you can iron out any kinks before we zoom ahead with prototyping next week.
 
 **Ask lots of questions**. Good luck!
 
