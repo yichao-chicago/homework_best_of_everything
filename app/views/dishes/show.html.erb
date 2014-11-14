@@ -6,7 +6,35 @@
   <dt>Name</dt>
   <dd><%= @dish.name %></dd>
 
-  <dt>Cuisine ID</dt>
-  <dd><%= @dish.cuisine_id %></dd>
+  <dt>Cuisine</dt>
+  <dd><%= Cuisine.find(@dish.cuisine_id).name %></dd>
 
 </dl>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>User</th>
+      <th>Venue</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% counter = 1 %>
+    <% dish_all_favorites = Favorite.where({:dish_id => @dish.id}) %>
+    <% dish_all_favorites.each do |fav| %>
+    <tr>
+      <td>
+        <%= counter %>
+        <% counter +=1 %>
+      </td>
+      <td>
+        <%= User.find(fav.user_id).username %>
+      </td>
+      <td>
+        <%= Venue.find(fav.venue_id).name %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

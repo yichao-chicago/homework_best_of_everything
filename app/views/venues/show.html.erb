@@ -6,8 +6,8 @@
   <dt>Name</dt>
   <dd><%= @venue.name %></dd>
 
-  <dt>Neighborhood ID</dt>
-  <dd><%= @venue.neighborhood_id %></dd>
+  <dt>Neighborhood</dt>
+  <dd><%= Neighborhood.find(@venue.neighborhood_id).name %></dd>
 
   <dt>Address</dt>
   <dd><%= @venue.address %></dd>
@@ -50,4 +50,31 @@
   </dd>
 </dl>
 
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>User</th>
+      <th>Dish</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% counter = 1 %>
+    <% venue_all_favorites = Favorite.where({:venue_id => @venue.id}) %>
+    <% venue_all_favorites.each do |fav| %>
+    <tr>
+      <td>
+        <%= counter %>
+        <% counter +=1 %>
+      </td>
+      <td>
+        <%= User.find(fav.user_id).username %>
+      </td>
+      <td>
+        <%= Dish.find(fav.dish_id).name %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
 

@@ -9,4 +9,17 @@
   <dt>City</dt>
   <dd><%= @neighborhood.city %></dd>
 
-</dl>
+  <hr class="vertical"/>
+
+  <h4>All venues at this neighborhood:</h4>
+
+  <ol>
+    <% neighborhood_all_venues = Venue.where({:neighborhood_id => @neighborhood.id})%>
+    <% neighborhood_all_venues.each do |venue| %>
+
+    <li>
+      <%= venue.name %>
+    </li>
+
+    <% end %>
+  </ol>

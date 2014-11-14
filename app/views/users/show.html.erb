@@ -7,3 +7,32 @@
   <dd><%= @user.username %></dd>
 
 </dl>
+
+<h4>My Favorites:</h4>
+
+<table class = "table table-hover">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Dish</th>
+      <th>Venue</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% counter = 1 %>
+    <% @user_all_favorites.each do |fav| %>
+      <tr>
+        <td>
+          <%= counter %>
+          <% counter +=1 %>
+        </td>
+        <td>
+          <%= Dish.find(fav.dish_id).name %>
+        </td>
+        <td>
+        <%= Venue.find(fav.venue_id).name %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
